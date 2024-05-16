@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.port || 8080;
 import scrapeProducts from "./scraper.js";
 app.use(express.json());
+app.use(express.static("public"));
 app.use("/", scrapeProducts);
 try {
   const httpServer = app.listen(port, () => {

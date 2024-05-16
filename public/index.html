@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Scraper</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="loader" id="loader"></div>
+    <h1>URL Scraper</h1>
+    <form id="urlForm">
+        <label for="url1">URL 1:</label>
+        <input type="url" id="url1" name="url1" required><br><br>
+        
+        <label for="url2">URL 2:</label>
+        <input type="url" id="url2" name="url2"><br><br>
+
+        <label for="url3">URL 3:</label>
+        <input type="url" id="url3" name="url3"><br><br>
+
+        <label for="url4">URL 4:</label>
+        <input type="url" id="url4" name="url4"><br><br>
+        <input type="submit" value="Scrape URLs">
+    </form>
+    <p>Or upload a file containing URLs:</p>
+    <input type="file" id="fileInput"  accept=".txt">
+    <script src="scripts.js"></script>
+</body>
+</html>

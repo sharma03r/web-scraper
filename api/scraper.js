@@ -7,13 +7,13 @@ const baseUrl = "https://crawler-test.com";
 
 router.post("/scrape", async (req, res) => {
   console.log("hi");
-  console.log(req.body.url);
+  console.log(req.body.urls);
   const { url } = req.body;
 
   if (!url.includes(baseUrl)) {
     console.log("Invalid URL");
     return res.status(404).json({
-      message: "Invald URL",
+      message: "Invalid URL",
     });
   }
   try {
@@ -21,7 +21,8 @@ router.post("/scrape", async (req, res) => {
     axios.get(url).then((response) => {
       // Load the HTML into cheerio
       data = cheerio.load(response.data);
-      console.log(response);
+      console.log(response)
+      ;
     });
     return res.status(200).json({
       text: "hi",
