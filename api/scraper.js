@@ -10,7 +10,6 @@ router.post("/scrape", async (req, res) => {
   console.log("hi");
   console.log(req.body.url);
   const { url } = req.body;
-
   if (!url.includes(baseUrl)) {
     console.log("Invalid URL");
     return res.status(404).json({
@@ -22,9 +21,10 @@ router.post("/scrape", async (req, res) => {
     axios.get(url).then((response) => {
       // Load the HTML into cheerio
       data = load(response.data);
+      let scrapedHTML = data.html();
+      console.log(scrapedHTML);
       return res.status(200).json({
-        text: "hi",
-        process_Id: process.pid,
+        scrapedHTML,
       });
     });
   } catch (error) {

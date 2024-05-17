@@ -1,0 +1,33 @@
+div {
+  max-width: 50vw;
+  margin: auto;
+}
+div h1 {
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  border: 2px solid cadetblue;
+  min-height: 50vh;
+  padding: 20px;
+}
+form input {
+  font-size: 20px;
+  padding: 5px;
+}
+form button {
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid #04aa6d;
+  padding: 7px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: green;
+}
+form button:hover {
+  color: white;
+  background-color: #04aa6d;
+}
