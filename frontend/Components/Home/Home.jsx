@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ function Home() {
     url3: "",
     url4: "",
   });
+  const navigate = useNavigate();
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -71,6 +73,7 @@ function Home() {
       console.log("data1=2:", data2);
       console.log("data3:", data3);
       console.log("data4:", data4);
+      navigate("/result");
     } catch (error) {
       console.log(error);
     }
