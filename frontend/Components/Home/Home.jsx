@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
+import Result from "../Result/Result";
 
 function Home() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,8 @@ function Home() {
     url3: "",
     url4: "",
   });
-  const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(true);
+  const [resData, setResData] = useState([]);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -70,61 +71,60 @@ function Home() {
         res4.json(),
       ]);
       console.log("data1:", data1);
-      console.log("data1=2:", data2);
+      console.log("data2:", data2);
       console.log("data3:", data3);
       console.log("data4:", data4);
-      navigate("/result");
+      setResData([data1, data2, data3, data4]);
+      setShowForm(false);
     } catch (error) {
       console.log(error);
     }
-
-    // const response = await fetch("http://localhost:8000/scrape", {
-    //   method: "POST",
-    //   mode: "cors",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: {
-    //     url: "https://crawler-test.com",
-    //   },
-    // });
-    // console.log(response);
   };
   return (
     <div>
-      <h1>Let's Scrape!</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="url"
-          name="url1"
-          value={formData.url1}
-          onChange={handleChange}
-          placeholder="Enter URL to scrape"
-          required
-        />
-        <input
-          type="url"
-          name="url2"
-          value={formData.url2}
-          onChange={handleChange}
-          placeholder="Enter URL to scrape"
-        />
-        <input
-          type="url"
-          name="url3"
-          value={formData.url3}
-          onChange={handleChange}
-          placeholder="Enter URL to scrape"
-        />
-        <input
-          type="url"
-          name="url4"
-          value={formData.url4}
-          onChange={handleChange}
-          placeholder="Enter URL to scrape"
-        />
-        <button type="submit">Get Data</button>
-      </form>
+      {showForm ? (
+        <div>
+          <h1>Let's Scrape!</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="url"
+              name="url1"
+              value={formData.url1}
+              onChange={handleChange}
+              placeholder="Enter URL to scrape"
+              required
+            />
+            <input
+              type="url"
+              name="url2"
+              value={formData.url2}
+              onChange={handleChange}
+              placeholder="Enter URL to scrape"
+            />
+            <input
+              type="url"
+              name="url3"
+              value={formData.url3}
+              onChange={handleChange}
+              placeholder="Enter URL to scrape"
+            />
+            <input
+              type="url"
+              name="url4"
+              value={formData.url4}
+              onChange={handleChange}
+              placeholder="Enter URL to scrape"
+            />
+            <button type="submit">Get Data</button>
+          </form>
+        </div>
+      ) : (
+        <div>
+          {resData.map((result) => (
+            <Result result={result} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

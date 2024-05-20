@@ -1,7 +1,8 @@
 import React from "react";
 
-function Result() {
-  return <div>Result</div>;
+function Result({ result }) {
+  console.log(result);
+  return <div dangerouslySetInnerHTML={{ __html: result.scrapedHTML }} />;
 }
 
 export default Result;
