@@ -119,9 +119,9 @@ function Home() {
           </form>
         </div>
       ) : (
-        <div>
+        <div className="result">
           {resData.map((result) => (
-            <Result result={result} />
+            <div dangerouslySetInnerHTML={{ __html: result.scrapedHTML }} />
           ))}
         </div>
       )}
